@@ -31,4 +31,15 @@ server.post('/weapons', (req, res) => {
     })
 })
 
+server.delete('/weapons/:id', (req, res) => {
+  const id = req.params.id
+
+  Weapons.remove(id).then(weapon => {
+    res.json({ message: 'weapon deleted' , weapon})
+  })
+  .catch(error => {
+    res.status(500).json({ message: "The weapon could not be removed" });
+  });
+})
+
 module.exports = server;

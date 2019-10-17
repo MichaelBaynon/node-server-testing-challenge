@@ -27,7 +27,9 @@ async function update(id, changes) {
 }
 
 function remove(id) {
-  return null;
+  return db('weapons')
+  .where('id',(id))
+  .del()
 }
 
 function getAll() {
